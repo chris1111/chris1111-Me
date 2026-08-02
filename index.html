@@ -321,8 +321,8 @@
         </div>
 
         <div class="reveal flex items-center justify-center gap-2 mb-8 flex-wrap" id="year-tabs">
-            <button onclick="switchYear('2026')" class="year-tab future-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all pl-7" data-year="2026">2026</button>
-            <button onclick="switchYear('2025')" class="year-tab active px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2025">2025</button>
+            <button onclick="switchYear('2026')" class="year-tab active px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2026">2026</button>
+            <button onclick="switchYear('2025')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2025">2025</button>
             <button onclick="switchYear('2024')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2024">2024</button>
             <button onclick="switchYear('2023')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2023">2023</button>
             <button onclick="switchYear('2022')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2022">2022</button>
@@ -333,7 +333,7 @@
         <div id="future-banner" class="reveal future-banner rounded-2xl p-5 mb-6 flex items-center justify-center gap-3" style="display:none;">
             <span class="text-2xl">🔮</span>
             <div>
-                <p class="text-sm font-semibold text-violet-300">The future is unwritten</p>
+                <p class="text-sm font-semibold text-violet-300">The future is not completely written</p>
                 <p class="text-xs text-violet-400/60">2026 contributions are still being dreamed up...</p>
             </div>
             <span class="text-2xl ml-2" style="animation: crystalSpin 4s linear infinite;">💎</span>
@@ -381,7 +381,7 @@
 
         <div class="reveal flex items-center justify-center gap-3 mt-8">
             <span class="streak-fire text-2xl">🔥</span>
-            <span class="text-zinc-300 text-sm"><span id="year-total" class="text-orange-400 font-bold text-lg">0</span> contributions in <span id="year-label">2025</span></span>
+            <span class="text-zinc-300 text-sm"><span id="year-total" class="text-orange-400 font-bold text-lg">0</span> contributions in <span id="year-label">2026</span></span>
         </div>
     </div>
 </section>
@@ -917,7 +917,7 @@
 
 <script>
 const yearData = {
-    2026: { total: 0, density: 0, future: true },
+    2026: { total: 1489, density: 0.85 },
     2025: { total: 487, density: 0.7 },
     2024: { total: 1043, density: 0.85 },
     2023: { total: 892, density: 0.75 },
@@ -982,7 +982,7 @@ function renderContribGrid(year) {
                 cell.style.opacity = '0';
                 const date = new Date(year, 0, 1 + w * 7 + d);
                 const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                cell.setAttribute('data-tooltip', `🔮 ${dateStr} — the future is fully ritten`);
+                cell.setAttribute('data-tooltip', `🔮 ${dateStr} — the future is not fully ritten`);
             } else {
                 const count = getContribCount(level);
                 totalContribs += count;
