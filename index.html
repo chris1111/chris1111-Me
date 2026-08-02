@@ -52,6 +52,14 @@
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
+        @keyframes futurePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes crystalSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
         .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
         .delay-100 { animation-delay: 0.1s; }
@@ -69,6 +77,10 @@
             background: linear-gradient(135deg, #f97316, #fb923c, #f59e0b);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
+        .future-gradient {
+            background: linear-gradient(135deg, #a78bfa, #818cf8, #c084fc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
 
         .contrib-cell {
             width: 11px; height: 11px; border-radius: 2px;
@@ -83,6 +95,11 @@
         .level-2 { background: #006d32; }
         .level-3 { background: #26a641; }
         .level-4 { background: #39d353; }
+        .level-future {
+            background: #161b22;
+            animation: futurePulse 2s ease-in-out infinite;
+            border: 1px solid rgba(139,92,246,0.15);
+        }
 
         .stat-card {
             transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.06);
@@ -167,6 +184,37 @@
         .repo-count-badge {
             background: rgba(249,115,22,0.08);
             border: 1px solid rgba(249,115,22,0.15);
+        }
+
+        .future-tab {
+            position: relative;
+            overflow: hidden;
+        }
+        .future-tab::before {
+            content: '🔮';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .future-tab:hover::before,
+        .future-tab.active::before {
+            opacity: 1;
+        }
+        .future-tab.active,
+        .future-tab:hover {
+            background: rgba(139,92,246,0.15) !important;
+            color: #a78bfa !important;
+            border: 1px solid rgba(139,92,246,0.3) !important;
+        }
+
+        .future-banner {
+            background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(168,85,247,0.05));
+            border: 1px solid rgba(139,92,246,0.2);
+            animation: futurePulse 3s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
@@ -272,12 +320,23 @@
             <p class="text-zinc-500 text-sm max-w-lg mx-auto">Every green square represents a day of code. The darker the green, the more contributions made that day.</p>
         </div>
 
-        <div class="reveal flex items-center justify-center gap-2 mb-8" id="year-tabs">
+        <div class="reveal flex items-center justify-center gap-2 mb-8 flex-wrap" id="year-tabs">
+            <button onclick="switchYear('2026')" class="year-tab future-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all pl-7" data-year="2026">2026</button>
             <button onclick="switchYear('2025')" class="year-tab active px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2025">2025</button>
             <button onclick="switchYear('2024')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2024">2024</button>
             <button onclick="switchYear('2023')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2023">2023</button>
             <button onclick="switchYear('2022')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2022">2022</button>
             <button onclick="switchYear('2021')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2021">2021</button>
+        </div>
+
+        <!-- Future banner for 2026 -->
+        <div id="future-banner" class="reveal future-banner rounded-2xl p-5 mb-6 flex items-center justify-center gap-3" style="display:none;">
+            <span class="text-2xl">🔮</span>
+            <div>
+                <p class="text-sm font-semibold text-violet-300">The future is unwritten</p>
+                <p class="text-xs text-violet-400/60">2026 contributions are still being dreamed up...</p>
+            </div>
+            <span class="text-2xl ml-2" style="animation: crystalSpin 4s linear infinite;">💎</span>
         </div>
 
         <div class="reveal overflow-x-auto pb-4">
@@ -494,7 +553,6 @@
 
         <div class="grid md:grid-cols-2 gap-4">
 
-            <!-- 1. Wireless-USB-Big-Sur-Adapter -->
             <a href="https://github.com/chris1111/Wireless-USB-Big-Sur-Adapter" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -512,7 +570,6 @@
                 </div>
             </a>
 
-            <!-- 2. Wireless-USB-OC-Big-Sur-Adapter -->
             <a href="https://github.com/chris1111/Wireless-USB-OC-Big-Sur-Adapter" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.05s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -530,7 +587,6 @@
                 </div>
             </a>
 
-            <!-- 3. WirelessAdapterCloverBigSur -->
             <a href="https://github.com/chris1111/WirelessAdapterCloverBigSur" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.1s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -548,7 +604,6 @@
                 </div>
             </a>
 
-            <!-- 4. D-LinkUtility-Package -->
             <a href="https://github.com/chris1111/D-LinkUtility-Package" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.15s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -566,7 +621,6 @@
                 </div>
             </a>
 
-            <!-- 5. HP-Probook-EliteBook-Package-Creator-OC -->
             <a href="https://github.com/chris1111/HP-Probook-EliteBook-Package-Creator-OC" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.2s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -584,7 +638,6 @@
                 </div>
             </a>
 
-            <!-- 6. OpenCore-Creator -->
             <a href="https://github.com/chris1111/OpenCore-Creator" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.25s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -602,7 +655,6 @@
                 </div>
             </a>
 
-            <!-- 7. My-Simple-OC-Themes -->
             <a href="https://github.com/chris1111/My-Simple-OC-Themes" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.3s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -620,7 +672,6 @@
                 </div>
             </a>
 
-            <!-- 8. MacEFIMounter -->
             <a href="https://github.com/chris1111/MacEFIMounter" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.35s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -638,7 +689,6 @@
                 </div>
             </a>
 
-            <!-- 9. HP-EliteBook-840-G4 -->
             <a href="https://github.com/chris1111/HP-EliteBook-840-G4" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.4s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -656,7 +706,6 @@
                 </div>
             </a>
 
-            <!-- 10. Snow-Leopard-DVD-Creator -->
             <a href="https://github.com/chris1111/Snow-Leopard-DVD-Creator" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.45s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -674,7 +723,6 @@
                 </div>
             </a>
 
-            <!-- 11. Lion-DVD-Creator -->
             <a href="https://github.com/chris1111/Lion-DVD-Creator" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.5s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -692,7 +740,6 @@
                 </div>
             </a>
 
-            <!-- 12. Chameleon -->
             <a href="https://github.com/chris1111/Chameleon" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.55s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -710,7 +757,6 @@
                 </div>
             </a>
 
-            <!-- 13. IconSet-Tahoe-Style-Linux-Mac -->
             <a href="https://github.com/chris1111/IconSet-Tahoe-Style-Linux-Mac" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.6s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -728,7 +774,6 @@
                 </div>
             </a>
 
-            <!-- 14. Compress-PNG -->
             <a href="https://github.com/chris1111/Compress-PNG" target="_blank" rel="noopener" class="reveal repo-card bg-zinc-900/40 rounded-2xl p-6 block" style="transition-delay:0.65s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-2 min-w-0">
@@ -875,6 +920,7 @@
 
 <script>
 const yearData = {
+    2026: { total: 0, density: 0, future: true },
     2025: { total: 487, density: 0.7 },
     2024: { total: 1043, density: 0.85 },
     2023: { total: 892, density: 0.75 },
@@ -887,6 +933,10 @@ let currentYear = 2025;
 function getContributionLevel(year, weekIndex, dayIndex) {
     const data = yearData[year];
     if (!data) return 0;
+
+    // 2026 — all future cells
+    if (data.future) return -1;
+
     if (year === 2025) {
         const currentDate = new Date();
         const startOfYear = new Date(year, 0, 1);
@@ -894,6 +944,7 @@ function getContributionLevel(year, weekIndex, dayIndex) {
         const cellDay = weekIndex * 7 + dayIndex;
         if (cellDay > dayOfYear) return 0;
     }
+
     const rand = Math.random();
     const d = data.density;
     let multiplier = 1;
@@ -909,37 +960,64 @@ function getContributionLevel(year, weekIndex, dayIndex) {
     return 0;
 }
 
-function getContribCount(level) {
-    const counts = [0, Math.floor(Math.random() * 3) + 1, Math.floor(Math.random() * 5) + 3, Math.floor(Math.random() * 6) + 6, Math.floor(Math.random() * 10) + 10];
-    return counts[level];
-}
-
 function renderContribGrid(year) {
     const grid = document.getElementById('contrib-grid');
     grid.innerHTML = '';
     let totalContribs = 0;
+    const isFuture = yearData[year] && yearData[year].future;
+    const futureBanner = document.getElementById('future-banner');
+    futureBanner.style.display = isFuture ? 'flex' : 'none';
+
+    // Update total label color for future
+    const yearTotalEl = document.getElementById('year-total');
+
     for (let w = 0; w < 52; w++) {
         const weekCol = document.createElement('div');
         weekCol.className = 'flex flex-col gap-[3px]';
         for (let d = 0; d < 7; d++) {
             const level = getContributionLevel(year, w, d);
-            const count = getContribCount(level);
-            totalContribs += count;
             const cell = document.createElement('div');
-            cell.className = `contrib-cell level-${level}`;
-            cell.style.animation = `cellPop 0.3s ease-out ${(w * 7 + d) * 0.5}ms forwards`;
-            cell.style.opacity = '0';
-            const date = new Date(year, 0, 1 + w * 7 + d);
-            const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            cell.setAttribute('data-tooltip', level > 0 ? `${count} contributions on ${dateStr}` : `No contributions on ${dateStr}`);
+
+            if (level === -1) {
+                // Future cell
+                cell.className = 'contrib-cell level-future';
+                cell.style.animation = `cellPop 0.3s ease-out ${(w * 7 + d) * 0.5}ms forwards`;
+                cell.style.opacity = '0';
+                const date = new Date(year, 0, 1 + w * 7 + d);
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                cell.setAttribute('data-tooltip', `🔮 ${dateStr} — the future is unwritten`);
+            } else {
+                const count = getContribCount(level);
+                totalContribs += count;
+                cell.className = `contrib-cell level-${level}`;
+                cell.style.animation = `cellPop 0.3s ease-out ${(w * 7 + d) * 0.5}ms forwards`;
+                cell.style.opacity = '0';
+                const date = new Date(year, 0, 1 + w * 7 + d);
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                cell.setAttribute('data-tooltip', level > 0 ? `${count} contributions on ${dateStr}` : `No contributions on ${dateStr}`);
+            }
+
             cell.addEventListener('mouseenter', showTooltip);
             cell.addEventListener('mouseleave', hideTooltip);
             weekCol.appendChild(cell);
         }
         grid.appendChild(weekCol);
     }
+
     document.getElementById('year-label').textContent = year;
-    animateNumber(document.getElementById('year-total'), totalContribs, 1500);
+
+    if (isFuture) {
+        yearTotalEl.className = 'future-gradient font-bold text-lg';
+        yearTotalEl.textContent = '???';
+    } else {
+        yearTotalEl.className = 'text-orange-400 font-bold text-lg';
+        animateNumber(yearTotalEl, totalContribs, 1500);
+    }
+}
+
+function getContribCount(level) {
+    const counts = [0, Math.floor(Math.random() * 3) + 1, Math.floor(Math.random() * 5) + 3, Math.floor(Math.random() * 6) + 6, Math.floor(Math.random() * 10) + 10];
+    return counts[level];
 }
 
 function showTooltip(e) {
@@ -966,6 +1044,7 @@ function switchYear(year) {
 
 function updateTabStyles() {
     document.querySelectorAll('.year-tab').forEach(tab => {
+        if (tab.classList.contains('future-tab')) return; // handled by CSS
         if (tab.classList.contains('active')) {
             tab.style.background = 'rgba(249,115,22,0.15)';
             tab.style.color = '#f97316';
@@ -985,12 +1064,16 @@ document.querySelectorAll('.year-tab').forEach(tab => {
 
 function animateNumber(el, target, duration = 1500) {
     const start = parseInt(el.textContent) || 0;
+    if (isNaN(start) || el.textContent === '???') {
+        el.textContent = '0';
+    }
+    const s = parseInt(el.textContent) || 0;
     const startTime = performance.now();
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(start + (target - start) * eased);
+        const current = Math.floor(s + (target - s) * eased);
         el.textContent = current.toLocaleString();
         if (progress < 1) requestAnimationFrame(update);
     }
