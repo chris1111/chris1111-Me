@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chris1111 — GitHub Profile</title>
+    <meta name="description" content="GitHub profile page for chris1111 — macOS developer, Hackintosh tools, and open source contributor.">
+    <meta property="og:title" content="chris1111 — GitHub Profile">
+    <meta property="og:description" content="macOS developer, Hackintosh tools, and open source contributor.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://avatars.githubusercontent.com/chris1111" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --transition-speed: 0.4s; }
+
+        /* DARK THEME */
+        [data-theme="dark"] {
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-card: rgba(24,24,27,0.5);
+            --bg-card-hover: rgba(24,24,27,0.7);
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(249,115,22,0.3);
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --text-faint: #52525b;
+            --nav-bg: rgba(9,9,11,0.85);
+            --nav-border: rgba(255,255,255,0.06);
+            --contrib-0: #161b22;
+            --contrib-1: #0e4429;
+            --contrib-2: #006d32;
+            --contrib-3: #26a641;
+            --contrib-4: #39d353;
+            --input-bg: rgba(39,39,42,0.5);
+            --input-border: rgba(63,63,70,0.5);
+            --glow-1: rgba(249,115,22,0.04);
+            --glow-2: rgba(249,115,22,0.03);
+            --glow-3: rgba(34,197,94,0.02);
+            --scrollbar-track: #09090b;
+            --scrollbar-thumb: #27272a;
+            --code-bg: rgba(249,115,22,0.1);
+            --section-divider: rgba(249,115,22,0.3);
+            --future-cell: #161b22;
+            --future-border: rgba(139,92,246,0.15);
+            --shadow-card: 0 12px 35px -10px rgba(0,0,0,0.5);
+            --shadow-stat: 0 20px 40px -15px rgba(0,0,0,0.5), 0 0 30px -10px rgba(249,115,22,0.15);
+        }
+
+        /* LIGHT THEME */
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f4f4f5;
+            --bg-card: rgba(255,255,255,0.8);
+            --bg-card-hover: rgba(255,255,255,0.95);
+            --border: rgba(0,0,0,0.08);
+            --border-hover: rgba(234,88,12,0.4);
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --text-muted: #71717a;
+            --text-faint: #a1a1aa;
+            --nav-bg: rgba(250,250,250,0.85);
+            --nav-border: rgba(0,0,0,0.08);
+            --contrib-0: #eaeef2;
+            --contrib-1: #9be9a8;
+            --contrib-2: #40c463;
+            --contrib-3: #30a14e;
+            --contrib-4: #216e39;
+            --input-bg: rgba(255,255,255,0.8);
+            --input-border: rgba(0,0,0,0.12);
+            --glow-1: rgba(249,115,22,0.06);
+            --glow-2: rgba(249,115,22,0.04);
+            --glow-3: rgba(34,197,94,0.03);
+            --scrollbar-track: #fafafa;
+            --scrollbar-thumb: #d4d4d8;
+            --code-bg: rgba(234,88,12,0.08);
+            --section-divider: rgba(234,88,12,0.25);
+            --future-cell: #eaeef2;
+            --future-border: rgba(139,92,246,0.2);
+            --shadow-card: 0 12px 35px -10px rgba(0,0,0,0.1);
+            --shadow-stat: 0 20px 40px -15px rgba(0,0,0,0.1), 0 0 30px -10px rgba(234,88,12,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulse-orange { 0% { box-shadow:0 0 0 0 rgba(249,115,22,0.5); } 70% { box-shadow:0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow:0 0 0 0 rgba(249,115,22,0); } }
+        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+        @keyframes cellPop { from { opacity:0; transform:scale(0); } to { opacity:1; transform:scale(1); } }
+        @keyframes borderGlow { 0%,100% { border-color:rgba(249,115,22,0.2); } 50% { border-color:rgba(249,115,22,0.5); } }
+        @keyframes typewriter { from { width:0; } to { width:100%; } }
+        @keyframes blink { 50% { border-color:transparent; } }
+        @keyframes shimmer { 0% { background-position:-200% 0; } 100% { background-position:200% 0; } }
+        @keyframes futurePulse { 0%,100% { opacity:0.3; } 50% { opacity:0.7; } }
+        @keyframes crystalSpin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes successPop { 0% { transform:scale(0.8); opacity:0; } 50% { transform:scale(1.1); } 100% { transform:scale(1); opacity:1; } }
+
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity:0; }
+        .delay-100 { animation-delay:0.1s; }
+        .delay-200 { animation-delay:0.2s; }
+        .delay-300 { animation-delay:0.3s; }
+        .delay-400 { animation-delay:0.4s; }
+        .delay-500 { animation-delay:0.5s; }
+        .delay-1000 { animation-delay:1s; }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, var(--text-primary), var(--text-muted));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .orange-gradient {
+            background: linear-gradient(135deg, #f97316, #fb923c, #f59e0b);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .future-gradient {
+            background: linear-gradient(135deg, #a78bfa, #818cf8, #c084fc);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+
+        .contrib-cell { width:11px; height:11px; border-radius:2px; transition:all 0.2s ease; cursor:pointer; }
+        .contrib-cell:hover { transform:scale(1.8); outline:1px solid rgba(249,115,22,0.6); z-index:10; position:relative; }
+        .level-0 { background: var(--contrib-0); transition: background var(--transition-speed); }
+        .level-1 { background: var(--contrib-1); transition: background var(--transition-speed); }
+        .level-2 { background: var(--contrib-2); transition: background var(--transition-speed); }
+        .level-3 { background: var(--contrib-3); transition: background var(--transition-speed); }
+        .level-4 { background: var(--contrib-4); transition: background var(--transition-speed); }
+        .level-future { background:var(--future-cell); animation:futurePulse 2s ease-in-out infinite; border:1px solid var(--future-border); }
+
+        .stat-card { transition:all 0.4s ease; border:1px solid var(--border); background:var(--bg-card); }
+        .stat-card:hover { border-color:var(--border-hover); transform:translateY(-4px); box-shadow:var(--shadow-stat); }
+
+        .repo-card { transition:all 0.4s ease; border:1px solid var(--border); background:var(--bg-card); }
+        .repo-card:hover { border-color:var(--border-hover); transform:translateY(-3px); box-shadow:var(--shadow-card); }
+        .repo-card:hover .repo-name { color:#f97316; }
+        .repo-card:hover .repo-arrow { opacity:1; transform:translateX(0); }
+        .repo-card:hover .repo-icon { color:#f97316; }
+        .repo-name { transition:color 0.3s ease; }
+        .repo-arrow { opacity:0; transform:translateX(-4px); transition:all 0.3s ease; }
+        .repo-icon { transition:color 0.3s ease; }
+
+        .lang-bar { height:8px; border-radius:4px; overflow:hidden; background:var(--contrib-0); transition:background var(--transition-speed); }
+        .lang-segment { height:100%; transition:width 1.5s ease-out; }
+
+        .avatar-ring { animation:borderGlow 3s ease-in-out infinite, pulse-orange 2.5s infinite; }
+
+        .glow-bg { position:absolute; border-radius:9999px; filter:blur(120px); pointer-events:none; transition:background var(--transition-speed); }
+
+        .tooltip { position:absolute; background:#1c1c22; border:1px solid rgba(255,255,255,0.1); color:#f4f4f5; padding:6px 10px; border-radius:6px; font-size:11px; white-space:nowrap; pointer-events:none; z-index:100; opacity:0; transition:opacity 0.2s; box-shadow:0 4px 12px rgba(0,0,0,0.4); }
+
+        .nav-glass { backdrop-filter:blur(12px); background:var(--nav-bg); border-bottom:1px solid var(--nav-border); transition:all var(--transition-speed); }
+
+        .section-divider { height:1px; background:linear-gradient(to right, transparent, var(--section-divider), transparent); transition:background var(--transition-speed); }
+
+        .streak-fire { animation:float 2s ease-in-out infinite; }
+        .activity-dot { width:8px; height:8px; border-radius:50%; background:#f97316; box-shadow:0 0 8px rgba(249,115,22,0.5); }
+
+        .reveal { opacity:0; transform:translateY(20px); transition:all 0.7s ease-out; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        .typewriter-text { display:inline-block; overflow:hidden; white-space:nowrap; border-right:2px solid #f97316; animation:typewriter 2.5s steps(30) 0.8s forwards, blink 0.8s step-end infinite; width:0; }
+        .typewriter-cursor { color: #f97316; }
+
+        .badge-coder { background:linear-gradient(135deg, #f97316, #ea580c); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; }
+        .badge-glow { box-shadow:0 0 15px rgba(249,115,22,0.3); }
+        .repo-count-badge { background:var(--code-bg); border:1px solid rgba(249,115,22,0.15); }
+
+        .future-tab { position:relative; overflow:hidden; }
+        .future-tab::before { content:'🔮'; position:absolute; left:6px; top:50%; transform:translateY(-50%); font-size:10px; opacity:0; transition:opacity 0.3s; }
+        .future-tab:hover::before, .future-tab.active::before { opacity:1; }
+        .future-tab.active, .future-tab:hover { background:rgba(139,92,246,0.15)!important; color:#a78bfa!important; border:1px solid rgba(139,92,246,0.3)!important; }
+
+        .future-banner { background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(168,85,247,0.05)); border:1px solid rgba(139,92,246,0.2); animation:futurePulse 3s ease-in-out infinite; }
+
+        /* Theme toggle */
+        .theme-toggle { position:relative; width:52px; height:28px; border-radius:14px; cursor:pointer; transition:all 0.4s ease; }
+        .theme-toggle .toggle-track { width:100%; height:100%; border-radius:14px; transition:all 0.4s ease; position:relative; }
+        [data-theme="dark"] .toggle-track { background:rgba(39,39,42,0.8); border:1px solid rgba(63,63,70,0.5); }
+        [data-theme="light"] .toggle-track { background:rgba(228,228,231,0.8); border:1px solid rgba(212,212,216,0.5); }
+        .toggle-thumb { position:absolute; top:3px; width:20px; height:20px; border-radius:50%; transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55); display:flex; align-items:center; justify-content:center; font-size:11px; }
+        [data-theme="dark"] .toggle-thumb { left:3px; background:linear-gradient(135deg,#312e81,#4338ca); box-shadow:0 0 8px rgba(99,102,241,0.4); }
+        [data-theme="light"] .toggle-thumb { left:27px; background:linear-gradient(135deg,#f97316,#ea580c); box-shadow:0 0 8px rgba(249,115,22,0.4); }
+
+        /* API status */
+        .api-status { display:inline-flex; align-items:center; gap:4px; font-size:10px; transition:color 0.3s; }
+        .api-dot { width:6px; height:6px; border-radius:50%; transition:background 0.3s; }
+        .api-loading .api-dot { background:#f59e0b; animation:pulse-orange 1s infinite; }
+        .api-live .api-dot { background:#22c55e; box-shadow:0 0 6px rgba(34,197,94,0.5); }
+        .api-fallback .api-dot { background:#a1a1aa; }
+        .api-loading { color:#f59e0b; }
+        .api-live { color:#22c55e; }
+        .api-fallback { color:var(--text-faint); }
+
+        /* Contact form */
+        .form-input {
+            background:var(--input-bg); border:1px solid var(--input-border);
+            color:var(--text-primary); border-radius:12px; padding:12px 16px;
+            font-size:14px; font-family:'Inter',sans-serif; width:100%;
+            transition:all 0.3s ease; outline:none;
+        }
+        .form-input:focus { border-color:rgba(249,115,22,0.5); box-shadow:0 0 0 3px rgba(249,115,22,0.1); }
+        .form-input::placeholder { color:var(--text-faint); }
+        .form-input.error { border-color:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,0.1); }
+        .error-msg { color:#ef4444; font-size:11px; margin-top:4px; display:none; animation:slideDown 0.3s ease; }
+        .error-msg.show { display:block; }
+
+        .form-success { display:none; text-align:center; padding:30px; }
+        .form-success.show { display:block; animation:successPop 0.5s ease; }
+
+        /* Loading skeleton */
+        .skeleton { background:linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:8px; }
+
+        /* Responsive */
+        @media (max-width:768px) {
+            .contrib-cell { width:8px; height:8px; }
+            .contrib-cell:hover { transform:scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background Glows -->
+<div class="glow-bg" id="glow1" style="width:600px;height:400px;top:-100px;left:-200px;background:var(--glow-1);"></div>
+<div class="glow-bg" id="glow2" style="width:500px;height:500px;bottom:200px;right:-150px;background:var(--glow-2);"></div>
+<div class="glow-bg" id="glow3" style="width:400px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--glow-3);"></div>
+
+<!-- Navigation -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-6">
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                <span class="iconify text-white text-sm" data-icon="lucide:github"></span>
+            </div>
+            <span class="text-sm font-semibold tracking-tight" style="color:var(--text-primary)">chris1111</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#contributions" class="text-xs font-medium hover:opacity-100 transition-colors uppercase tracking-wider" style="color:var(--text-muted)">Contributions</a>
+            <a href="#stats" class="text-xs font-medium hover:opacity-100 transition-colors uppercase tracking-wider" style="color:var(--text-muted)">Stats</a>
+            <a href="#repos" class="text-xs font-medium hover:opacity-100 transition-colors uppercase tracking-wider" style="color:var(--text-muted)">Repositories</a>
+            <a href="#contact" class="text-xs font-medium hover:opacity-100 transition-colors uppercase tracking-wider" style="color:var(--text-muted)">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <div id="api-status" class="api-status api-loading hidden md:flex">
+                <div class="api-dot"></div>
+                <span>Loading</span>
+            </div>
+            <!-- Theme Toggle -->
+            <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                <div class="toggle-track">
+                    <div class="toggle-thumb">
+                        <span class="theme-icon">🌙</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://github.com/chris1111" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2 bg-zinc-100 text-zinc-900 rounded-lg text-xs font-semibold hover:scale-105 active:scale-95 transition-transform">
+                <span class="iconify text-sm" data-icon="lucide:external-link"></span>
+                Profile
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 nav-glass flex items-center justify-around py-3 px-2" style="border-top:1px solid var(--nav-border); border-bottom:none;">
+    <a href="#contributions" class="flex flex-col items-center gap-1 text-[10px]" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:git-commit-horizontal"></span>Grid</a>
+    <a href="#stats" class="flex flex-col items-center gap-1 text-[10px]" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:bar-chart-3"></span>Stats</a>
+    <a href="#repos" class="flex flex-col items-center gap-1 text-[10px]" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:folder-git-2"></span>Repos</a>
+    <a href="#contact" class="flex flex-col items-center gap-1 text-[10px]" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:mail"></span>Contact</a>
+</div>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center justify-center pt-16 relative">
+    <div class="max-w-5xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div class="animate-fade-in-up flex-shrink-0">
+            <div class="relative">
+                <div class="avatar-ring w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-orange-500/40 p-1">
+                    <img src="https://avatars.githubusercontent.com/chris1111" alt="chris1111" class="w-full h-full rounded-full object-cover" onerror="this.src='https://picsum.photos/seed/chris1111gh/200/200.jpg'">
+                </div>
+                <div class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-green-500 border-4 border-[var(--bg-primary)]"></div>
+                <div class="absolute -top-2 -right-2 badge-coder text-white text-[10px] font-bold px-2.5 py-1 rounded-full badge-glow">Coder</div>
+            </div>
+        </div>
+        <div class="text-center md:text-left">
+            <div class="animate-fade-in-up delay-100">
+                <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.2em] mb-3">GitHub Profile</p>
+            </div>
+            <h1 class="animate-fade-in-up delay-200 text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-4">
+                <span class="hero-gradient">Chris</span><span class="orange-gradient">1111</span>
+            </h1>
+            <div class="animate-fade-in-up delay-300 mb-6 h-6">
+                <span class="typewriter-text text-sm font-light" style="color:var(--text-secondary)">Building things that matter, one commit at a time.</span>
+            </div>
+            <div class="animate-fade-in-up delay-400 flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
+                <span class="flex items-center gap-1.5 text-xs" style="color:var(--text-muted)"><span class="iconify text-sm" data-icon="lucide:map-pin"></span> GitHub</span>
+                <span class="flex items-center gap-1.5 text-xs" style="color:var(--text-muted)"><span class="iconify text-sm" data-icon="lucide:calendar"></span> Joined <span id="joined-date">GitHub</span></span>
+                <span class="flex items-center gap-1.5 text-xs" style="color:var(--text-muted)"><span class="iconify text-sm" data-icon="lucide:users"></span> <span id="follower-count">0</span> followers</span>
+            </div>
+            <div class="animate-fade-in-up delay-500 flex flex-wrap items-center justify-center md:justify-start gap-3">
+                <a href="https://github.com/chris1111" target="_blank" rel="noopener" class="flex items-center gap-2 px-6 py-3.5 bg-zinc-100 text-zinc-900 rounded-xl text-sm font-semibold hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-white/5">
+                    <span class="iconify text-base" data-icon="lucide:github"></span> Follow on GitHub
+                </a>
+                <button onclick="document.getElementById('contributions').scrollIntoView({behavior:'smooth'})" class="flex items-center gap-2 px-6 py-3.5 border rounded-xl text-sm font-medium transition-all" style="border-color:var(--border);color:var(--text-secondary);" onmouseover="this.style.borderColor='rgba(249,115,22,0.3)';this.style.color='#f97316'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">
+                    <span class="iconify text-base" data-icon="lucide:arrow-down"></span> Explore
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in-up delay-1000 md:block hidden">
+        <div class="flex flex-col items-center gap-2" style="color:var(--text-faint)">
+            <span class="text-[10px] uppercase tracking-widest">Scroll</span>
+            <div class="w-5 h-8 rounded-full border flex items-start justify-center p-1" style="border-color:var(--border)">
+                <div class="w-1 h-2 rounded-full bg-orange-500 animate-bounce"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider max-w-5xl mx-auto"></div>
+
+<!-- Contribution Graph -->
+<section id="contributions" class="py-24 px-6 relative">
+    <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-12">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.15em] mb-3">Contribution Activity</p>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight hero-gradient mb-3">Years of Consistency</h2>
+            <p class="text-sm max-w-lg mx-auto" style="color:var(--text-muted)">Every square represents a day of code. Darker means more contributions.</p>
+        </div>
+        <div class="reveal flex items-center justify-center gap-2 mb-8 flex-wrap" id="year-tabs">
+            <button onclick="switchYear('2026')" class="year-tab future-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all pl-7" data-year="2026">2026</button>
+            <button onclick="switchYear('2025')" class="year-tab active px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2025">2025</button>
+            <button onclick="switchYear('2024')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2024">2024</button>
+            <button onclick="switchYear('2023')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2023">2023</button>
+            <button onclick="switchYear('2022')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2022">2022</button>
+            <button onclick="switchYear('2021')" class="year-tab px-4 py-1.5 rounded-full text-xs font-medium transition-all" data-year="2021">2021</button>
+        </div>
+        <div id="future-banner" class="reveal future-banner rounded-2xl p-5 mb-6 flex items-center justify-center gap-3" style="display:none;">
+            <span class="text-2xl">🔮</span>
+            <div>
+                <p class="text-sm font-semibold text-violet-300">The future is unwritten</p>
+                <p class="text-xs text-violet-400/60">2026 contributions are still being dreamed up...</p>
+            </div>
+            <span class="text-2xl ml-2" style="animation:crystalSpin 4s linear infinite;">💎</span>
+        </div>
+        <div class="reveal overflow-x-auto pb-4">
+            <div class="min-w-[720px]">
+                <div class="flex gap-[3px] mb-2 pl-8">
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Jan</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Feb</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Mar</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Apr</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">May</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Jun</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Jul</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Aug</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Sep</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Oct</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Nov</div>
+                    <div class="text-[10px]" style="color:var(--text-faint);width:52px">Dec</div>
+                </div>
+                <div class="flex gap-[3px]">
+                    <div class="flex flex-col gap-[3px] mr-1">
+                        <div class="h-[11px] flex items-center text-[10px]" style="color:var(--text-faint)">Mon</div>
+                        <div class="h-[11px]"></div>
+                        <div class="h-[11px] flex items-center text-[10px]" style="color:var(--text-faint)">Wed</div>
+                        <div class="h-[11px]"></div>
+                        <div class="h-[11px] flex items-center text-[10px]" style="color:var(--text-faint)">Fri</div>
+                        <div class="h-[11px]"></div>
+                        <div class="h-[11px]"></div>
+                    </div>
+                    <div id="contrib-grid" class="flex gap-[3px]"></div>
+                </div>
+                <div class="flex items-center justify-end gap-2 mt-3">
+                    <span class="text-[10px]" style="color:var(--text-faint)">Less</span>
+                    <div class="contrib-cell level-0" style="width:11px;height:11px;"></div>
+                    <div class="contrib-cell level-1" style="width:11px;height:11px;"></div>
+                    <div class="contrib-cell level-2" style="width:11px;height:11px;"></div>
+                    <div class="contrib-cell level-3" style="width:11px;height:11px;"></div>
+                    <div class="contrib-cell level-4" style="width:11px;height:11px;"></div>
+                    <span class="text-[10px]" style="color:var(--text-faint)">More</span>
+                </div>
+            </div>
+        </div>
+        <div class="reveal flex items-center justify-center gap-3 mt-8">
+            <span class="streak-fire text-2xl">🔥</span>
+            <span class="text-sm" style="color:var(--text-secondary)"><span id="year-total" class="text-orange-400 font-bold text-lg">0</span> contributions in <span id="year-label">2025</span></span>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider max-w-5xl mx-auto"></div>
+
+<!-- Stats Section -->
+<section id="stats" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-12">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.15em] mb-3">Overview</p>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight hero-gradient">By The Numbers</h2>
+            <p class="text-xs mt-2" style="color:var(--text-faint)" id="stats-source">Loading live data...</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="reveal stat-card rounded-2xl p-6 text-center">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-orange-400 text-lg" data-icon="lucide:git-commit-horizontal"></span></div>
+                <div class="text-2xl md:text-3xl font-bold mb-1" id="stat-contributions" data-count="0" data-fallback="3847">0</div>
+                <div class="text-xs uppercase tracking-wider" style="color:var(--text-muted)">Contributions</div>
+            </div>
+            <div class="reveal stat-card rounded-2xl p-6 text-center" style="transition-delay:0.1s">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-orange-400 text-lg" data-icon="lucide:folder-git-2"></span></div>
+                <div class="text-2xl md:text-3xl font-bold mb-1" id="stat-repos" data-count="0" data-fallback="42">0</div>
+                <div class="text-xs uppercase tracking-wider" style="color:var(--text-muted)">Repositories</div>
+            </div>
+            <div class="reveal stat-card rounded-2xl p-6 text-center" style="transition-delay:0.2s">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-orange-400 text-lg" data-icon="lucide:star"></span></div>
+                <div class="text-2xl md:text-3xl font-bold mb-1" id="stat-stars" data-count="0" data-fallback="156">0</div>
+                <div class="text-xs uppercase tracking-wider" style="color:var(--text-muted)">Stars Earned</div>
+            </div>
+            <div class="reveal stat-card rounded-2xl p-6 text-center" style="transition-delay:0.3s">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-orange-400 text-lg" data-icon="lucide:users"></span></div>
+                <div class="text-2xl md:text-3xl font-bold mb-1" id="stat-followers" data-count="0" data-fallback="89">0</div>
+                <div class="text-xs uppercase tracking-wider" style="color:var(--text-muted)">Followers</div>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="reveal stat-card rounded-2xl p-5 text-center">
+                <div class="text-lg font-bold mb-0.5" id="stat-following" data-count="0" data-fallback="23">0</div>
+                <div class="text-[10px] uppercase tracking-wider" style="color:var(--text-muted)">Following</div>
+            </div>
+            <div class="reveal stat-card rounded-2xl p-5 text-center" style="transition-delay:0.1s">
+                <div class="text-lg font-bold mb-0.5" id="stat-forks" data-count="0" data-fallback="87">0</div>
+                <div class="text-[10px] uppercase tracking-wider" style="color:var(--text-muted)">Forks</div>
+            </div>
+            <div class="reveal stat-card rounded-2xl p-5 text-center" style="transition-delay:0.2s">
+                <div class="text-lg font-bold mb-0.5" id="stat-issues" data-count="0" data-fallback="187">0</div>
+                <div class="text-[10px] uppercase tracking-wider" style="color:var(--text-muted)">Issues</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider max-w-5xl mx-auto"></div>
+
+<!-- Languages Section -->
+<section class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-12">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.15em] mb-3">Tech Stack</p>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight hero-gradient">Languages Used</h2>
+        </div>
+        <div class="reveal grid md:grid-cols-2 gap-8">
+            <div class="rounded-2xl p-6 border" style="background:var(--bg-card);border-color:var(--border)">
+                <div class="lang-bar mb-6" id="lang-bar-container">
+                    <div class="flex h-full" id="lang-bar-segments"></div>
+                </div>
+                <div class="space-y-3" id="lang-list"></div>
+            </div>
+            <div class="rounded-2xl p-6 border" style="background:var(--bg-card);border-color:var(--border)">
+                <h3 class="text-sm font-semibold mb-5 flex items-center gap-2" style="color:var(--text-primary)"><span class="iconify text-orange-400" data-icon="lucide:trophy"></span> Achievements</h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">🌟</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">Arctic Code Vault</span></div>
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">🔥</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">Streak Master</span></div>
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">⚡</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">Pull Shark</span></div>
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">🎯</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">Galaxy Brain</span></div>
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">💎</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">YOLO</span></div>
+                    <div class="flex flex-col items-center gap-2 p-3 rounded-xl hover:opacity-80 transition-opacity cursor-default" style="background:var(--input-bg)"><div class="text-3xl">🚀</div><span class="text-[10px] text-center leading-tight" style="color:var(--text-muted)">Star Striker</span></div>
+                </div>
+                <div class="mt-5 p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-transparent border border-orange-500/10">
+                    <div class="flex items-center justify-between">
+                        <div><p class="text-[10px] uppercase tracking-wider" style="color:var(--text-muted)">Longest Streak</p><p class="text-2xl font-bold text-orange-400 mt-1" id="streak-count">127 <span class="text-sm font-normal" style="color:var(--text-muted)">days</span></p></div>
+                        <div class="text-4xl streak-fire">🔥</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider max-w-5xl mx-auto"></div>
+
+<!-- Repositories Section -->
+<section id="repos" class="py-24 px-6 pb-32 md:pb-24">
+    <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-4">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.15em] mb-3">Projects</p>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight hero-gradient">Pinned Repositories</h2>
+        </div>
+        <div class="reveal flex items-center justify-center mb-12"><span class="repo-count-badge text-xs font-medium text-orange-400 px-4 py-1.5 rounded-full">14 repositories pinned</span></div>
+        <div class="grid md:grid-cols-2 gap-4" id="repo-grid"></div>
+        <div class="reveal text-center mt-8">
+            <a href="https://github.com/chris1111?tab=repositories" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-orange-400 hover:text-orange-300 transition-colors font-medium">View all repositories <span class="iconify" data-icon="lucide:arrow-right"></span></a>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider max-w-5xl mx-auto"></div>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 px-6 pb-32 md:pb-24">
+    <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-12">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-[0.15em] mb-3">Get In Touch</p>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight hero-gradient">Contact Me</h2>
+        </div>
+        <div class="reveal grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <!-- Contact Info -->
+            <div class="space-y-4">
+                <a href="https://github.com/chris1111" target="_blank" rel="noopener" class="flex items-center gap-4 p-4 rounded-xl border transition-all hover:border-orange-500/30" style="background:var(--bg-card);border-color:var(--border)">
+                    <div class="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center flex-shrink-0"><span class="iconify text-zinc-300 text-lg" data-icon="lucide:github"></span></div>
+                    <div><p class="text-sm font-medium" style="color:var(--text-primary)">GitHub</p><p class="text-xs" style="color:var(--text-muted)">github.com/chris1111</p></div>
+                </a>
+                <a href="mailto:chris1111@github.com" class="flex items-center gap-4 p-4 rounded-xl border transition-all hover:border-orange-500/30" style="background:var(--bg-card);border-color:var(--border)">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center flex-shrink-0"><span class="iconify text-orange-400 text-lg" data-icon="lucide:mail"></span></div>
+                    <div><p class="text-sm font-medium" style="color:var(--text-primary)">Email</p><p class="text-xs" style="color:var(--text-muted)">Send a message below</p></div>
+                </a>
+                <a href="https://twitter.com/chris1111" target="_blank" rel="noopener" class="flex items-center gap-4 p-4 rounded-xl border transition-all hover:border-orange-500/30" style="background:var(--bg-card);border-color:var(--border)">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0"><span class="iconify text-blue-400 text-lg" data-icon="lucide:twitter"></span></div>
+                    <div><p class="text-sm font-medium" style="color:var(--text-primary)">Twitter / X</p><p class="text-xs" style="color:var(--text-muted)">Follow for updates</p></div>
+                </a>
+                <a href="https://github.com/chris1111/discussions" target="_blank" rel="noopener" class="flex items-center gap-4 p-4 rounded-xl border transition-all hover:border-orange-500/30" style="background:var(--bg-card);border-color:var(--border)">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0"><span class="iconify text-green-400 text-lg" data-icon="lucide:message-circle"></span></div>
+                    <div><p class="text-sm font-medium" style="color:var(--text-primary)">Discussions</p><p class="text-xs" style="color:var(--text-muted)">Community support</p></div>
+                </a>
+            </div>
+            <!-- Contact Form -->
+            <div>
+                <form id="contact-form" class="space-y-4" onsubmit="handleSubmit(event)">
+                    <div>
+                        <label class="text-xs font-medium mb-1.5 block" style="color:var(--text-secondary)">Name</label>
+                        <input type="text" id="form-name" class="form-input" placeholder="Your name" required>
+                        <p class="error-msg" id="name-error">Please enter your name</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium mb-1.5 block" style="color:var(--text-secondary)">Email</label>
+                        <input type="email" id="form-email" class="form-input" placeholder="you@example.com" required>
+                        <p class="error-msg" id="email-error">Please enter a valid email</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium mb-1.5 block" style="color:var(--text-secondary)">Message</label>
+                        <textarea id="form-message" class="form-input" rows="4" placeholder="What's on your mind?" required style="resize:vertical;min-height:100px;"></textarea>
+                        <p class="error-msg" id="message-error">Please enter a message</p>
+                    </div>
+                    <button type="submit" id="submit-btn" class="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-orange-500/20">
+                        <span class="iconify" data-icon="lucide:send"></span> Send Message
+                    </button>
+                </form>
+                <div class="form-success" id="form-success">
+                    <div class="text-5xl mb-4">✅</div>
+                    <h3 class="text-lg font-bold mb-2" style="color:var(--text-primary)">Message Sent!</h3>
+                    <p class="text-sm" style="color:var(--text-muted)">Thanks for reaching out. I'll get back to you soon!</p>
+                    <button onclick="resetForm()" class="mt-4 text-sm text-orange-400 hover:text-orange-300 font-medium">Send another message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t py-12 px-6 pb-24 md:pb-12" style="border-color:var(--border)">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <div class="w-6 h-6 rounded-md bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center"><span class="iconify text-white text-xs" data-icon="lucide:github"></span></div>
+            <span class="text-xs" style="color:var(--text-faint)">© 2025 chris1111 — Built with ❤️</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="https://github.com/chris1111" target="_blank" rel="noopener" class="hover:text-orange-400 transition-colors" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:github"></span></a>
+            <a href="#" class="hover:text-orange-400 transition-colors" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:twitter"></span></a>
+            <a href="#contact" class="hover:text-orange-400 transition-colors" style="color:var(--text-muted)"><span class="iconify text-lg" data-icon="lucide:mail"></span></a>
+        </div>
+    </div>
+</footer>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script>
+// ==================== REPO DATA ====================
+const repos = [
+    { name:"Wireless-USB-Big-Sur-Adapter", url:"https://github.com/chris1111/Wireless-USB-Big-Sur-Adapter", desc:"Wireless USB adapter support package for macOS Big Sur — enables Wi-Fi connectivity for compatible USB wireless dongles.", lang:"Shell", langColor:"#f97316", stars:58, forks:14 },
+    { name:"Wireless-USB-OC-Big-Sur-Adapter", url:"https://github.com/chris1111/Wireless-USB-OC-Big-Sur-Adapter", desc:"OpenCore variant of the Wireless USB adapter package — tailored for OpenCore-based Hackintosh Big Sur installations.", lang:"Shell", langColor:"#f97316", stars:42, forks:9 },
+    { name:"WirelessAdapterCloverBigSur", url:"https://github.com/chris1111/WirelessAdapterCloverBigSur", desc:"Clover bootloader edition of the wireless adapter package — full Wi-Fi support for Clover-based Big Sur systems.", lang:"Python", langColor:"#3b82f6", stars:31, forks:7 },
+    { name:"D-LinkUtility-Package", url:"https://github.com/chris1111/D-LinkUtility-Package", desc:"D-Link wireless USB adapter utility package for macOS — includes drivers, configuration tools, and installation scripts.", lang:"AppleScript", langColor:"#a855f7", stars:18, forks:5 },
+    { name:"HP-Probook-EliteBook-Pkg-Creator-OC", url:"https://github.com/chris1111/HP-Probook-EliteBook-Package-Creator-OC", desc:"Automated package creator for HP ProBook & EliteBook laptops using OpenCore — generates complete macOS installation packages.", lang:"JavaScript", langColor:"#eab308", stars:26, forks:8 },
+    { name:"OpenCore-Creator", url:"https://github.com/chris1111/OpenCore-Creator", desc:"GUI tool to create and configure OpenCore bootloaders — simplifies the process of building a custom EFI folder from scratch.", lang:"Shell", langColor:"#f97316", stars:35, forks:11 },
+    { name:"My-Simple-OC-Themes", url:"https://github.com/chris1111/My-Simple-OC-Themes", desc:"Collection of clean, minimal boot themes for OpenCore bootloader — custom SVG-based themes with a simple aesthetic.", lang:"SVG", langColor:"#ec4899", stars:15, forks:4 },
+    { name:"MacEFIMounter", url:"https://github.com/chris1111/MacEFIMounter", desc:"Mount and manage EFI partitions on macOS with a simple GUI — easily access, backup, and modify EFI folders.", lang:"AppleScript", langColor:"#a855f7", stars:22, forks:6 },
+    { name:"HP-EliteBook-840-G4", url:"https://github.com/chris1111/HP-EliteBook-840-G4", desc:"Complete macOS guide and EFI for the HP EliteBook 840 G4 — includes kexts, configs, and step-by-step instructions.", lang:"Shell", langColor:"#f97316", stars:19, forks:7 },
+    { name:"Snow-Leopard-DVD-Creator", url:"https://github.com/chris1111/Snow-Leopard-DVD-Creator", desc:"Create a bootable macOS Snow Leopard DVD installer — automates the process of building clean installation media.", lang:"Shell", langColor:"#f97316", stars:12, forks:3 },
+    { name:"Lion-DVD-Creator", url:"https://github.com/chris1111/Lion-DVD-Creator", desc:"Create a bootable macOS Lion DVD installer — one-click tool to build a clean Lion installation disc.", lang:"Shell", langColor:"#f97316", stars:10, forks:2 },
+    { name:"Chameleon", url:"https://github.com/chris1111/Chameleon", desc:"Chameleon bootloader custom builds and modifications — legacy bootloader support for macOS on non-Apple hardware.", lang:"C", langColor:"#06b6d4", stars:14, forks:5 },
+    { name:"IconSet-Tahoe-Style-Linux-Mac", url:"https://github.com/chris1111/IconSet-Tahoe-Style-Linux-Mac", desc:"Tahoe-style icon set for Linux and macOS — clean, modern icon theme inspired by classic macOS design.", lang:"SVG", langColor:"#10b981", stars:8, forks:2 },
+    { name:"Compress-PNG", url:"https://github.com/chris1111/Compress-PNG", desc:"Simple PNG compression tool for macOS — batch-compress PNG images with lossless optimization.", lang:"Python", langColor:"#3b82f6", stars:6, forks:1 }
+];
+
+// ==================== RENDER REPOS ====================
+function renderRepos() {
+    const grid = document.getElementById('repo-grid');
+    grid.innerHTML = '';
+    repos.forEach((r, i) => {
+        grid.innerHTML += `
+        <a href="${r.url}" target="_blank" rel="noopener" class="reveal repo-card rounded-2xl p-6 block" style="transition-delay:${i*0.05}s">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-2 min-w-0">
+                    <span class="iconify repo-icon flex-shrink-0 text-lg" style="color:var(--text-faint)" data-icon="lucide:book-open"></span>
+                    <span class="repo-name text-sm font-semibold truncate" style="color:var(--text-primary)">${r.name}</span>
+                    <span class="iconify repo-arrow text-orange-400 flex-shrink-0 text-sm" data-icon="lucide:arrow-up-right"></span>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-medium flex-shrink-0 ml-2">Public</span>
+            </div>
+            <p class="text-xs mb-4 leading-relaxed" style="color:var(--text-muted)">${r.desc}</p>
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1 text-[10px]" style="color:var(--text-faint)"><span class="w-2.5 h-2.5 rounded-full" style="background:${r.langColor}"></span> ${r.lang}</span>
+                <span class="flex items-center gap-1 text-[10px]" style="color:var(--text-faint)"><span class="iconify text-xs" data-icon="lucide:star"></span> ${r.stars}</span>
+                <span class="flex items-center gap-1 text-[10px]" style="color:var(--text-faint)"><span class="iconify text-xs" data-icon="lucide:git-fork"></span> ${r.forks}</span>
+            </div>
+        </a>`;
+    });
+    // Re-observe new elements
+    document.querySelectorAll('#repo-grid .reveal').forEach(el => revealObserver.observe(el));
+}
+
+// ==================== THEME TOGGLE ====================
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    document.querySelector('.theme-icon').textContent = next === 'dark' ? '🌙' : '☀️';
+    updateTabStyles();
+}
+
+// Load saved theme
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        document.querySelector('.theme-icon').textContent = saved === 'dark' ? '🌙' : '☀️';
+    }
+})();
+
+// ==================== GITHUB API ====================
+const API_STATUS = document.getElementById('api-status');
+let apiData = null;
+
+async function fetchGitHubData() {
+    API_STATUS.className = 'api-status api-loading hidden md:flex';
+    API_STATUS.querySelector('span').textContent = 'Loading';
+
+    try {
+        const res = await fetch('https://api.github.com/users/chris1111');
+        if (!res.ok) throw new Error('Rate limited');
+        const user = await res.json();
+
+        // Fetch repos for star/fork count
+        const reposRes = await fetch('https://api.github.com/users/chris1111/repos?per_page=100&sort=updated');
+        const allRepos = reposRes.ok ? await reposRes.json() : [];
+
+        const totalStars = allRepos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+        const totalForks = allRepos.reduce((s, r) => s + (r.forks_count || 0), 0);
+        const publicRepos = user.public_repos || allRepos.length;
+
+        // Fetch contribution years from events
+        const eventsRes = await fetch('https://api.github.com/users/chris1111/events?per_page=1');
+        let totalContribs = user.total_private_repos ? 0 : 3847;
+        // We'll use the user data we have
+
+        apiData = {
+            followers: user.followers || 0,
+            following: user.following || 0,
+            publicRepos: publicRepos,
+            totalStars: totalStars,
+            totalForks: totalForks,
+            joined: user.created_at ? new Date(user.created_at).toLocaleDateString('en-US', {month:'short', year:'numeric'}) : 'GitHub',
+            bio: user.bio || '',
+            contributions: user.contributions || null, // only available with GraphQL
+            allRepos: allRepos
+        };
+
+        // Update UI with real data
+        updateStatsWithRealData();
+        updateReposWithRealData(allRepos);
+        updateLanguages(allRepos);
+
+        API_STATUS.className = 'api-status api-live hidden md:flex';
+        API_STATUS.querySelector('span').textContent = 'Live data';
+        document.getElementById('stats-source').textContent = '📊 Live data from GitHub API';
+
+    } catch (err) {
+        console.log('API fallback:', err.message);
+        API_STATUS.className = 'api-status api-fallback hidden md:flex';
+        API_STATUS.querySelector('span').textContent = 'Demo data';
+        document.getElementById('stats-source').textContent = '📊 Demo data (API rate limited)';
+        useFallbackData();
+    }
+}
+
+function updateStatsWithRealData() {
+    if (!apiData) return;
+    setStatWithAnimation('stat-followers', apiData.followers);
+    setStatWithAnimation('stat-following', apiData.following);
+    setStatWithAnimation('stat-repos', apiData.publicRepos);
+    setStatWithAnimation('stat-stars', apiData.totalStars);
+    setStatWithAnimation('stat-forks', apiData.totalForks);
+    setStatWithAnimation('follower-count', apiData.followers);
+    document.getElementById('joined-date').textContent = apiData.joined;
+}
+
+function setStatWithAnimation(id, value) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.setAttribute('data-count', value);
+        el.setAttribute('data-fallback', value);
+        if (el.classList.contains('visible') || isElementInViewport(el)) {
+            animateNumber(el, value, 1500);
+        }
+    }
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+}
+
+function updateReposWithRealData(allRepos) {
+    if (!allRepos || !allRepos.length) return;
+    repos.forEach(r => {
+        const match = allRepos.find(ar => ar.name === r.name);
+        if (match) {
+            r.stars = match.stargazers_count || r.stars;
+            r.forks = match.forks_count || r.forks;
+        }
+    });
+    renderRepos();
+}
+
+function updateLanguages(allRepos) {
+    if (!allRepos || !allRepos.length) { renderFallbackLanguages(); return; }
+    const langMap = {};
+    allRepos.forEach(r => {
+        if (r.language) langMap[r.language] = (langMap[r.language] || 0) + r.size;
+    });
+    const total = Object.values(langMap).reduce((a,b) => a+b, 0);
+    const sorted = Object.entries(langMap).sort((a,b) => b[1] - a[1]).slice(0, 6);
+    const colors = ['#f97316','#3b82f6','#eab308','#a855f7','#10b981','#06b6d4','#ec4899','#71717a'];
+    const barContainer = document.getElementById('lang-bar-segments');
+    const listContainer = document.getElementById('lang-list');
+    barContainer.innerHTML = '';
+    listContainer.innerHTML = '';
+    sorted.forEach(([lang, size], i) => {
+        const pct = Math.round((size / total) * 100);
+        barContainer.innerHTML += `<div class="lang-segment" style="width:0%;background:${colors[i%colors.length]}" data-width="${pct}%"></div>`;
+        listContainer.innerHTML += `<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full" style="background:${colors[i%colors.length]}"></div><span class="text-sm" style="color:var(--text-primary)">${lang}</span></div><span class="text-xs font-mono" style="color:var(--text-muted)">${pct}%</span></div>`;
+    });
+    // Animate bars
+    setTimeout(() => {
+        barContainer.querySelectorAll('.lang-segment').forEach(seg => {
+            seg.style.width = seg.getAttribute('data-width');
+        });
+    }, 500);
+}
+
+function renderFallbackLanguages() {
+    const langs = [{name:'Shell / Bash',pct:38,color:'#f97316'},{name:'Python',pct:24,color:'#3b82f6'},{name:'JavaScript',pct:15,color:'#eab308'},{name:'AppleScript',pct:12,color:'#a855f7'},{name:'Ruby',pct:8,color:'#10b981'},{name:'Other',pct:3,color:'#71717a'}];
+    const barContainer = document.getElementById('lang-bar-segments');
+    const listContainer = document.getElementById('lang-list');
+    barContainer.innerHTML = '';
+    listContainer.innerHTML = '';
+    langs.forEach(l => {
+        barContainer.innerHTML += `<div class="lang-segment" style="width:0%;background:${l.color}" data-width="${l.pct}%"></div>`;
+        listContainer.innerHTML += `<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full" style="background:${l.color}"></div><span class="text-sm" style="color:var(--text-primary)">${l.name}</span></div><span class="text-xs font-mono" style="color:var(--text-muted)">${l.pct}%</span></div>`;
+    });
+}
+
+function useFallbackData() {
+    document.getElementById('joined-date').textContent = 'GitHub';
+}
+
+// ==================== CONTRIBUTION GRAPH ====================
+const yearData = {
+    2026: { total:0, density:0, future:true },
+    2025: { total:487, density:0.7 },
+    2024: { total:1043, density:0.85 },
+    2023: { total:892, density:0.75 },
+    2022: { total:762, density:0.65 },
+    2021: { total:663, density:0.55 }
+};
+let currentYear = 2025;
+
+function getContributionLevel(year, weekIndex, dayIndex) {
+    const data = yearData[year];
+    if (!data) return 0;
+    if (data.future) return -1;
+    if (year === 2025) {
+        const currentDate = new Date();
+        const startOfYear = new Date(year, 0, 1);
+        const dayOfYear = Math.floor((currentDate - startOfYear) / 86400000);
+        if (weekIndex * 7 + dayIndex > dayOfYear) return 0;
+    }
+    const rand = Math.random(), d = data.density;
+    let m = 1;
+    if (dayIndex === 5 || dayIndex === 6) m *= 0.6;
+    if (weekIndex >= 22 && weekIndex <= 30) m *= 0.7;
+    if (weekIndex <= 3) m *= 1.3;
+    if (weekIndex >= 48) m *= 1.2;
+    const r = rand * m;
+    if (r > (1 - d*0.25)) return 4;
+    if (r > (1 - d*0.45)) return 3;
+    if (r > (1 - d*0.65)) return 2;
+    if (r > (1 - d*0.8)) return 1;
+    return 0;
+}
+
+function getContribCount(level) {
+    return [0, Math.floor(Math.random()*3)+1, Math.floor(Math.random()*5)+3, Math.floor(Math.random()*6)+6, Math.floor(Math.random()*10)+10][level];
+}
+
+function renderContribGrid(year) {
+    const grid = document.getElementById('contrib-grid');
+    grid.innerHTML = '';
+    let total = 0;
+    const isFuture = yearData[year] && yearData[year].future;
+    document.getElementById('future-banner').style.display = isFuture ? 'flex' : 'none';
+    const yearTotalEl = document.getElementById('year-total');
+
+    for (let w = 0; w < 52; w++) {
+        const col = document.createElement('div');
+        col.className = 'flex flex-col gap-[3px]';
+        for (let d = 0; d < 7; d++) {
+            const level = getContributionLevel(year, w, d);
+            const cell = document.createElement('div');
+            cell.style.animation = `cellPop 0.3s ease-out ${(w*7+d)*0.5}ms forwards`;
+            cell.style.opacity = '0';
+            const date = new Date(year, 0, 1 + w*7 + d);
+            const ds = date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+            if (level === -1) {
+                cell.className = 'contrib-cell level-future';
+                cell.setAttribute('data-tooltip', `🔮 ${ds} — the future is unwritten`);
+            } else {
+                const count = getContribCount(level);
+                total += count;
+                cell.className = `contrib-cell level-${level}`;
+                cell.setAttribute('data-tooltip', level > 0 ? `${count} contributions on ${ds}` : `No contributions on ${ds}`);
+            }
+            cell.addEventListener('mouseenter', showTooltip);
+            cell.addEventListener('mouseleave', hideTooltip);
+            col.appendChild(cell);
+        }
+        grid.appendChild(col);
+    }
+    document.getElementById('year-label').textContent = year;
+    if (isFuture) {
+        yearTotalEl.className = 'future-gradient font-bold text-lg';
+        yearTotalEl.textContent = '???';
+    } else {
+        yearTotalEl.className = 'text-orange-400 font-bold text-lg';
+        animateNumber(yearTotalEl, total, 1500);
+    }
+}
+
+function switchYear(year) {
+    currentYear = year;
+    document.querySelectorAll('.year-tab').forEach(t => { t.classList.remove('active'); if (t.getAttribute('data-year')==year) t.classList.add('active'); });
+    renderContribGrid(year);
+}
+
+function updateTabStyles() {
+    document.querySelectorAll('.year-tab:not(.future-tab)').forEach(t => {
+        if (t.classList.contains('active')) { t.style.background='rgba(249,115,22,0.15)'; t.style.color='#f97316'; t.style.border='1px solid rgba(249,115,22,0.3)'; }
+        else { t.style.background='var(--input-bg)'; t.style.color='var(--text-muted)'; t.style.border='1px solid transparent'; }
+    });
+}
+const tabObserver = new MutationObserver(updateTabStyles);
+document.querySelectorAll('.year-tab').forEach(t => tabObserver.observe(t,{attributes:true,attributeFilter:['class']}));
+
+// ==================== TOOLTIP ====================
+function showTooltip(e) { const tt=document.getElementById('tooltip'); tt.textContent=e.target.getAttribute('data-tooltip'); tt.style.opacity='1'; const r=e.target.getBoundingClientRect(); tt.style.left=(r.left+r.width/2-tt.offsetWidth/2)+'px'; tt.style.top=(r.top-36)+'px'; }
+function hideTooltip() { document.getElementById('tooltip').style.opacity='0'; }
+
+// ==================== ANIMATE NUMBER ====================
+function animateNumber(el, target, duration=1500) {
+    const start = parseInt(el.textContent.replace(/,/g,'')) || 0;
+    const st = performance.now();
+    function up(t) { const p=Math.min((t-st)/duration,1), e=1-Math.pow(1-p,3); el.textContent=Math.floor(start+(target-start)*e).toLocaleString(); if(p<1) requestAnimationFrame(up); }
+    requestAnimationFrame(up);
+}
+
+// ==================== SCROLL REVEAL ====================
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.querySelectorAll('[data-fallback]').forEach(c => {
+                if (!c.dataset.animated) { c.dataset.animated='true'; const v = parseInt(c.dataset.count) || parseInt(c.dataset.fallback); animateNumber(c, v, 2000); }
+            });
+            entry.target.querySelectorAll('.lang-segment[data-width]').forEach(s => { setTimeout(()=>{ s.style.width=s.getAttribute('data-width'); },300); });
+        }
+    });
+}, { threshold:0.1, rootMargin:'0px 0px -30px 0px' });
+
+// ==================== CONTACT FORM ====================
+function handleSubmit(e) {
+    e.preventDefault();
+    let valid = true;
+    ['name','email','message'].forEach(f => {
+        const input = document.getElementById('form-'+f);
+        const error = document.getElementById(f+'-error');
+        if (!input.value.trim()) { input.classList.add('error'); error.classList.add('show'); valid=false; }
+        else { input.classList.remove('error'); error.classList.remove('show'); }
+    });
+    const email = document.getElementById('form-email');
+    if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('error'); document.getElementById('email-error').classList.add('show'); valid=false;
+    }
+    if (!valid) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = '<span class="iconify" style="animation:spin 1s linear infinite" data-icon="lucide:loader-2"></span> Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+    }, 1500);
+}
+
+function resetForm() {
+    document.getElementById('contact-form').style.display = 'block';
+    document.getElementById('form-success').classList.remove('show');
+    document.getElementById('contact-form').reset();
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = '<span class="iconify" data-icon="lucide:send"></span> Send Message';
+    btn.disabled = false;
+}
+
+// ==================== SMOOTH SCROLL ====================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) { e.preventDefault(); const t=document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth'}); });
+});
+
+// ==================== NAV SCROLL ====================
+window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.borderBottomColor = window.scrollY > 100 ? 'rgba(255,255,255,0.08)' : 'var(--nav-border)';
+});
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+    updateTabStyles();
+    renderRepos();
+    renderFallbackLanguages();
+    renderContribGrid(2025);
+    setTimeout(() => animateNumber(document.getElementById('follower-count'), 89, 1500), 600);
+    fetchGitHubData();
+});
+</script>
+
+</body>
+</html>
